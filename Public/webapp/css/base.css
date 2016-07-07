@@ -1,0 +1,84 @@
+
+/*全局公共*/
+*{
+    padding:0;
+    margin:0;
+}
+.clera{
+    clear: both;
+}
+
+a,a:visited,a:link{
+    text-decoration: none;
+    color:#FFFFFF;
+}
+
+li{
+    float:left;
+    display: block;
+    list-style: none;
+}
+
+/*导航栏部分*/
+#navbar,#bottom-navbar{
+    position: fixed;
+    width: 100%;
+}
+#navbar{
+    background-color: red;
+    top:0;
+}
+#bottom-navbar{
+    bottom: 0;
+    background-color: #262626;
+    margin-bottom:0;
+    z-index: 10000;
+}
+
+.bot-nav-btn{
+    width:20%;
+    padding:5px 20px;
+    font-size:   0.5rem;
+    margin-top:   5px;
+}
+.bot-nav-btn a{
+    color:#FFFFFF;;
+}
+
+.brand {
+    color: #fff;
+    position: absolute;
+    top: 17px;
+    left: 0;
+    z-index: -10000;
+    width: 100%;
+    margin: auto;
+    font-size: 17px;
+    text-align: center;
+}
+
+.navbar-menu #menu {
+    float: right;
+    padding: 10px 16px 10px 10px;
+
+    font-size: 20px;
+
+    color: #fff;
+}
+/*中间的内容框部分*/
+#container{
+    margin-top:75px;
+    margin-bottom:60px;
+}
+
+.navbar-menu{
+    float:right;
+    display: block;
+    line-height:60px;
+    padding-right:0.2rem;
+
+}
+
+.container{
+    padding:0;
+}

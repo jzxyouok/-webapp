@@ -1,0 +1,92 @@
+<extend name="Public:base" />
+
+<block name="css">
+
+    <style>
+        body{background: #e6e6e6;}
+        #container{
+            padding:0;
+            margin-top:40px;
+        }
+        .background{
+            width: 100%;
+            height: 100%;
+            background-color: pink;
+            position: absolute;
+            z-index: -2;
+        }
+    .blur {
+        -webkit-filter: blur(10px); /* Chrome, Opera */
+        -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+    }
+        .headImg{
+            display: block;
+            height: 2rem;
+            width: 2rem;
+            border-radius: 4rem;
+            z-index:-1;
+            margin: 0.5rem auto 0.1rem auto;
+        }
+        .myInfo{
+            width: 100%;
+            height: 0.8rem;;
+            line-height: 0.8rem;
+            padding:0 10px;
+            border-top: 1px solid #999;
+            background-color: #FFFFFF;
+        }
+        .btn{
+            display: block;
+            width: 80%;
+            height: 0.8rem;
+            margin: 0 auto;
+            margin-bottom:20px;
+        }
+        li{float: none;}
+    </style>
+</block>
+
+<block name="title" >个人中心</block>
+<block name="title-head">个人中心</block>
+<block name="return-text"><span class="glyphicon glyphicon-menu-left"></span></block>
+<block name='return-href'>{:U('Index/index')}</block>
+
+<block name="content">
+
+    <div style="height: 5rem; width: 100%; position: relative; padding-top:20px;">
+        <img src="__ROOT__/Photo/User/1.jpg" class="background blur" >
+        <img src="__ROOT__/Photo/User/1.jpg" class="headImg">
+        <center><h4>Jandou</h4></center>
+    </div>
+    
+    <div style="height: 7rem;width: 100%; background-color: #e6e6e6; padding-top: 20px; ">
+
+        <div>
+            <h4>&nbsp;&nbsp;服务</h4>
+            <ul style="display: block">
+                <li class="myInfo">
+                    <span class="glyphicon glyphicon-usd"></span>增值服务<span style="float: right"><span class="glyphicon glyphicon-menu-right"></span></span>
+                </li>
+            </ul>
+        </div>
+            <div>
+                <h4>&nbsp;&nbsp;安全设置</h4>
+                <ul style="display: block">
+                    <li class="myInfo">
+                        <span class="glyphicon glyphicon-phone"></span>手机号<span style="float: right">13750059992<span class="glyphicon glyphicon-menu-right"></span></span>
+                    </li>
+                    <li class="myInfo">
+                        <span class="glyphicon glyphicon-envelope"></span>邮箱<span style="float: right">809781809@qq.com<span class="glyphicon glyphicon-menu-right"></span></span>
+                    </li>
+                </ul>
+            </div>
+                <a href="#" class="btn btn-danger">退出账号</a>
+                <a href="#" class="btn btn-primary">用户反馈</a>
+    </div>
+    
+
+</block>
+
+<block name='bottom-nav-visable'>visibility: hidden</block>

@@ -1,0 +1,103 @@
+<extend name="Public:base" />
+
+<block name="css">
+    <link href="__PUBLIC__/bower_components/swiper/css/swiper.min.css" rel="stylesheet">
+    <style>
+        .greencolor{
+            color: green;
+        }
+        .redcolor{
+            color:red;
+        }
+    </style>
+</block>
+
+<block name="title">自选股</block>
+
+<block name="return-text">自选股</block>
+
+<block name="content">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+                    <table class="table">
+                        <thead>
+                           <th  class="swiper-slide" >名称</th>
+                           <th  class="swiper-slide">最新</th>
+                           <th class="swiper-slide" >涨幅</th>
+                           <th class="swiper-slide" >换手率</th>
+                        </thead>
+                        <tbody id="mainInfo">
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+    <div id="info" data-info="{$info}"></div>
+</block>
+
+
+<block name="js">
+
+    <script type="text/javascript" src="{$info}" id="tempInfo"></script>
+    <script type="text/javascript" src="__PUBLIC__/bower_components/swiper/js/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            slidesPerView: 1,
+            paginationClickable: true,
+            spaceBetween: 30,
+            freeMode: true
+        });
+
+
+        function stockData() {
+            var t = "{$data}".split(",");
+            var eles = new Array;
+            for (var i = 0; i < t.length; ++i) {
+                var temp = 'v_' + t[i];
+                eles[i] = eval(temp).split("~");
+
+                if(eles[i][32]>= 0 ) {
+                    $("#mainInfo").append(
+                            "<tr>" +
+                            "<td>" + eles[i][1] + "</td>" +
+                            "<td class='redcolor'>" + eles[i][3] + "</td>" +
+                            "<td class='redcolor'>" + eles[i][32] + "%</td>" +
+                            "<td>" + eles[i][38] + "%</td>" +
+                            "</tr>");
+                }
+                else
+                {
+                    $("#mainInfo").append(
+                            "<tr>" +
+                            "<td>" + eles[i][1] + "</td>" +
+                            "<td class='greencolor'>" + eles[i][3] + "</td>" +
+                            "<td class='greencolor' style='text-indent: -0.5em;'>" + eles[i][32] + "%</td>" +
+                            "<td>" + eles[i][38] + "%</td>" +
+                            "</tr>");
+                }
+
+            }
+            console.log(eles);   //控制台中测试数据
+        }
+        stockData();
+
+        function re()
+        {
+            var element=document.getElementById("tempInfo");
+            if(element)
+            {
+                //alert(element.innerHTML);
+                element.parentNode.removeChild(element);
+            }
+            var head= document.getElementsByTagName('head')[0];
+            var script= document.createElement('script');
+            script.src = "{$info}";
+            script.id = 'tempInfo';
+            head.appendChild(script);
+            $("#mainInfo").html("");
+            stockData();
+        }
+//        window.setInterval("re()",3000);
+    </script>
+
+</block>
